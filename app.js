@@ -1,6 +1,7 @@
 const bodyParse = require('body-parser');
 const express = require('express');
 const app = express();
+const http= require('http');
 
 const mongoose = require('mongoose');
 //const url ='mongodb://localhost:27017/';
@@ -20,3 +21,8 @@ app.use('/notes',notesRouter);
 app.listen(PORT , () => {
     console.log(`listening on ${PORT}`);
 });
+
+//to keep heroku awake
+setInterval( function() {
+    http.get("https://frozen-ocean-17860.herokuapp.com/notes");
+},600000);
