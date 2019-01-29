@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const NoteController = require('../controllers/NoteController');
-
+const verifyUser = require('../controllers/verifyUser');
 
 //return all notes
 router.get('/',NoteController.getAllNotes);
@@ -13,7 +13,7 @@ router.get('/:id',NoteController.getNote);
 
 
 //create new note
-router.post('/', NoteController.createNote);
+router.post('/',verifyUser, NoteController.createNote);
 
 
 //update a note

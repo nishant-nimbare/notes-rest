@@ -46,7 +46,7 @@ exports.createNote = function (req,res){
     newNote.save((err)=>{
         if (err) return res.send(err);
 
-        return res.json(newNote);
+        return res.json({newNote, id : req.user_id});
     });
 
 }

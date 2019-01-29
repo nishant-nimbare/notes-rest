@@ -23,3 +23,6 @@
 * start server <br>
 
   `node app.js`
+
+
+the api is live at https://frozen-ocean-17860.herokuapp.com/notes
