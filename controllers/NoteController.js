@@ -7,7 +7,7 @@ const Note = require('../Model/NoteSchema');
 // ' /notes'
 exports.getAllNotes = function (req,res){
 
-    Note.find({}, (err,result)=>{
+    Note.find({user_id:req.user_id}, (err,result)=>{
 
         if (err) throw err;
 
@@ -22,7 +22,7 @@ exports.getNote = function (req,res){
 
     console.log(req.params.id);
 
-    Note.findById(req.params.id, (err,result)=>{
+    Note.findOne({ user_id : req.user_id , _id : req.params.id}, (err,result)=>{
         if (err) return res.send(err);
 
         return res.send(result);
@@ -38,15 +38,15 @@ exports.createNote = function (req,res){
 
         title : req.body.title,
         description : req.body.description,
-        category : req.body.category
-
+        category : req.body.category,
+        user_id : req.user_id
     });
 
 
     newNote.save((err)=>{
         if (err) return res.send(err);
 
-        return res.json({newNote, id : req.user_id});
+        return res.json(newNote);
     });
 
 }
@@ -61,9 +61,10 @@ exports.updateNote = function(req,res){
     let newValues = {
         title : title,
         description : description,
-        category : category
+        category : category,
+        user_id : req.user_id
     }
-    Note.updateOne({_id : req.params.id} , newValues,  (err,result)=>{
+    Note.updateOne({_id : req.params.id , user_id : req.user_id } , newValues,  (err,result)=>{
 
         if (err) return res.send(err);
 
@@ -77,7 +78,7 @@ exports.updateNote = function(req,res){
 
 exports.deleteNote = function (req,res){
 
-    Note.deleteOne({_id : req.params.id} , (err)=>{
+    Note.deleteOne({_id : req.params.id , user_id : req.user_id} , (err)=>{
         if (err) return res.send(err);
 
         return res.send('deleted!!!');

@@ -2,7 +2,9 @@ const bodyParse = require('body-parser');
 const express = require('express');
 const app = express();
 const http= require('http');
+
 const config = require('./config');
+const verifyUser = require('./controllers/verifyUser');
 
 const mongoose = require('mongoose');
 //const url ='mongodb://localhost:27017/';
@@ -17,7 +19,7 @@ const userRouter = require('./routes/UserRouter');
 
 app.use(bodyParse.json());
 
-app.use('/notes',notesRouter);
+app.use('/notes',verifyUser ,notesRouter);
 app.use('/users',userRouter);
 
 app.listen(PORT , () => {

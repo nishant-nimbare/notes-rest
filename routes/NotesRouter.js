@@ -13,7 +13,7 @@ router.get('/:id',NoteController.getNote);
 
 
 //create new note
-router.post('/',verifyUser, NoteController.createNote);
+router.post('/', NoteController.createNote);
 
 
 //update a note

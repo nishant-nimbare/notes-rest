@@ -7,6 +7,7 @@ let NoteSchema = new Schema({
     title : { type : String },
     description : { type : String },
     category : { type : String },
+    user_id : { type: String}
     
 });
 
