@@ -27,7 +27,7 @@
 
 the api is live at https://frozen-ocean-17860.herokuapp.com/notes
 
-##feature
+## features
 
 * CRUD for notes
     each note has title desription and category
@@ -40,7 +40,7 @@ the api is live at https://frozen-ocean-17860.herokuapp.com/notes
     user get a token on successful login and sign up
 
 
-## T0DO
+## TODO
 * add user id to notes model
 * return user specific notes based on token 
 * encrypt passwords
