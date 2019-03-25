@@ -1,6 +1,6 @@
 # notes-rest
 ### A node js REST api for note management system
-
+---
 ## Instalation
 
 * install dependencies:<br>
@@ -26,7 +26,7 @@
 
 
 the api is live at https://frozen-ocean-17860.herokuapp.com/notes
-
+---
 ## features
 
 * CRUD for notes
@@ -45,3 +45,5 @@ the api is live at https://frozen-ocean-17860.herokuapp.com/notes
 * return user specific notes based on token 
 * encrypt passwords
 * use public and private keys for jwt secret 
+
+### Planing to intergrate with the [notes android app](https://github.com/nishant-nimbare/Notes) 
